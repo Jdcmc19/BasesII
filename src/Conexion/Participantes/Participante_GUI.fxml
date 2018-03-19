@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="535.0" prefWidth="654.0" style="-fx-background-color: #20120f;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Conexion.Participantes.Participante">
+   <children>
+      <AnchorPane layoutX="352.0" layoutY="35.0" prefHeight="466.0" prefWidth="274.0" style="-fx-background-color: #300006;">
+         <children>
+            <Label layoutX="18.0" layoutY="99.0" prefHeight="27.0" prefWidth="71.0" text="Delivery" textFill="#a13e3e" />
+            <Label layoutX="19.0" layoutY="138.0" prefHeight="27.0" prefWidth="71.0" text="Until" textFill="#a13e3e" />
+            <TextField layoutX="90.0" layoutY="99.0" style="-fx-background-color: #a13e3e;" />
+            <DatePicker layoutX="90.0" layoutY="137.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" />
+            <Label layoutX="110.0" layoutY="14.0" text="Bid" textFill="#a13e3e">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="275.0" fitWidth="229.0" layoutX="28.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagenes/Bid.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="90.0" layoutY="417.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" text="Insert" textFill="#eedede" />
+         </children></AnchorPane>
+      <AnchorPane layoutX="33.0" layoutY="35.0" prefHeight="466.0" prefWidth="283.0" style="-fx-background-color: #300006;">
+         <children>
+            <Label layoutX="105.0" layoutY="14.0" text="Auction" textFill="#a13e3e">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="130.0" layoutY="65.0" text="Nick" textFill="#a13e3e">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="247.0" prefHeight="27.0" prefWidth="71.0" text="Name" textFill="#a13e3e" />
+            <Label layoutX="20.0" layoutY="284.0" prefHeight="27.0" prefWidth="71.0" text="Description" textFill="#a13e3e" />
+            <Label layoutX="18.0" layoutY="136.0" prefHeight="27.0" prefWidth="71.0" text="Delivery" textFill="#a13e3e" />
+            <Label layoutX="18.0" layoutY="99.0" prefHeight="27.0" prefWidth="71.0" text="Price" textFill="#a13e3e" />
+            <Label layoutX="19.0" layoutY="174.0" prefHeight="27.0" prefWidth="71.0" text="Until" textFill="#a13e3e" />
+            <TextField layoutX="92.0" layoutY="247.0" style="-fx-background-color: #a13e3e;" />
+            <TextField layoutX="92.0" layoutY="284.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" />
+            <TextField layoutX="90.0" layoutY="136.0" style="-fx-background-color: #a13e3e;" />
+            <TextField layoutX="90.0" layoutY="99.0" style="-fx-background-color: #a13e3e;" />
+            <DatePicker layoutX="90.0" layoutY="173.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" />
+            <Label layoutX="133.0" layoutY="220.0" text="Item" textFill="#a13e3e">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="322.0" prefHeight="27.0" prefWidth="71.0" text="Primary" textFill="#a13e3e" />
+            <Label layoutX="19.0" layoutY="361.0" prefHeight="27.0" prefWidth="71.0" text="Secondary" textFill="#a13e3e" />
+            <ComboBox layoutX="92.0" layoutY="322.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" />
+            <ComboBox layoutX="91.0" layoutY="361.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" />
+            <Button layoutX="92.0" layoutY="418.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" text="Insert" textFill="#eedede" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
