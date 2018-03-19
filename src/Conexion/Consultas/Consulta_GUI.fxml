@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
@@ -8,42 +12,41 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="610.0" prefWidth="817.0" style="-fx-background-color: #20120f;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Conexion.Consultas.Consulta">
+<AnchorPane prefHeight="610.0" prefWidth="817.0" style="-fx-background-color: #000013;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Conexion.Consultas.Consulta">
    <children>
-      <AnchorPane layoutX="31.0" layoutY="30.0" prefHeight="257.0" prefWidth="765.0" style="-fx-background-color: #300006#300006;">
+      <AnchorPane layoutX="31.0" layoutY="30.0" prefHeight="257.0" prefWidth="765.0" style="-fx-background-color: #111122;">
          <children>
-            <TableView layoutX="45.0" layoutY="21.0" prefHeight="200.0" prefWidth="525.0" style="-fx-background-color: #a13e3e;">
+            <TableView fx:id="subastas_consulta" layoutX="45.0" layoutY="21.0" prefHeight="200.0" prefWidth="525.0" style="-fx-background-color: #339966;">
               <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="75.0" text="Value" />
-                  <TableColumn prefWidth="75.0" text="Until" />
-                  <TableColumn prefWidth="75.0" text="Delivery" />
-                  <TableColumn prefWidth="75.0" text="Nick" />
-                  <TableColumn prefWidth="75.0" text="Name" />
-                  <TableColumn prefWidth="75.0" text="Bid ID" />
+                <TableColumn fx:id="id_subasta" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="value_subasta" prefWidth="75.0" text="Value" />
+                  <TableColumn fx:id="until_subasta" prefWidth="75.0" text="Until" />
+                  <TableColumn fx:id="delivery_subasta" prefWidth="75.0" text="Delivery" />
+                  <TableColumn fx:id="nick_subasta" prefWidth="75.0" text="Nick" />
+                  <TableColumn fx:id="name_subasta" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="bidId_subasta" prefWidth="75.0" text="Bid ID" />
               </columns>
             </TableView>
-            <ComboBox layoutX="580.0" layoutY="60.0" prefWidth="167.0" style="-fx-background-color: #a13e3e#a13e3e;" />
-            <ComboBox layoutX="580.0" layoutY="98.0" prefWidth="167.0" style="-fx-background-color: #a13e3e#a13e3e;" />
-            <Button layoutX="581.0" layoutY="194.0" mnemonicParsing="false" prefWidth="167.0" style="-fx-background-color: #a13e3e;" text="My auctions" textFill="#ffdede" />
-            <Button layoutX="580.0" layoutY="22.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" text="Search by" textFill="#ffdede" />
+            <ComboBox fx:id="primary_subasta" layoutX="580.0" layoutY="60.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <ComboBox fx:id="secondary_subasta" layoutX="580.0" layoutY="98.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <Button fx:id="myAuction_subasta" layoutX="581.0" layoutY="194.0" mnemonicParsing="false" prefWidth="167.0" style="-fx-background-color: #339966;" text="My auctions" textFill="#ffdede" />
+            <Button fx:id="search_subasta" layoutX="580.0" layoutY="22.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Search by" textFill="#ffdede" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="31.0" layoutY="320.0" prefHeight="257.0" prefWidth="613.0" style="-fx-background-color: #300006#300006;">
+      <AnchorPane layoutX="31.0" layoutY="320.0" prefHeight="257.0" prefWidth="613.0" style="-fx-background-color: #111122;">
          <children>
-            <TableView layoutX="40.0" layoutY="23.0" prefHeight="200.0" prefWidth="378.0" style="-fx-background-color: #a13e3e;">
+            <TableView fx:id="ofertas_consulta" layoutX="40.0" layoutY="23.0" prefHeight="200.0" prefWidth="378.0" style="-fx-background-color: #339966;">
                <columns>
-                  <TableColumn prefWidth="75.0" text="ID" />
-                  <TableColumn prefWidth="75.0" text="Date" />
-                  <TableColumn prefWidth="75.0" text="Value" />
-                  <TableColumn prefWidth="75.0" text="Auction ID" />
-                  <TableColumn prefWidth="75.0" text="Nick" />
+                  <TableColumn fx:id="id_oferta" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="date_oferta" prefWidth="75.0" text="Date" />
+                  <TableColumn fx:id="value_oferta" prefWidth="75.0" text="Value" />
+                  <TableColumn fx:id="auctionId_oferta" prefWidth="75.0" text="Auction ID" />
+                  <TableColumn fx:id="nick_oferta" prefWidth="75.0" text="Nick" />
                </columns>
             </TableView>
-            <ComboBox layoutX="429.0" layoutY="61.0" prefWidth="167.0" style="-fx-background-color: #a13e3e#a13e3e;" />
-            <Button layoutX="428.0" layoutY="23.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" text="Bids for auction" textFill="#ffdede" />
-            <Button layoutX="429.0" layoutY="195.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" text="My bids" textFill="#ffdede" />
+            <ComboBox fx:id="idsubasta_oferta" layoutX="429.0" layoutY="61.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <Button fx:id="bidsAuction_oferta" layoutX="428.0" layoutY="23.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Bids for auction" textFill="#ffdede" />
+            <Button fx:id="myBid_oferta" layoutX="429.0" layoutY="195.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="My bids" textFill="#ffdede" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="193.0" fitWidth="167.0" layoutX="661.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">

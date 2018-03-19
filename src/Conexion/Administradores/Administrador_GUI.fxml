@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -7,54 +11,83 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="670.0" style="-fx-background-color: #20120f;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Conexion.Administradores.Administrador">
+<AnchorPane prefHeight="655.0" prefWidth="672.0" style="-fx-background-color: #000013;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Conexion.Administradores.Administrador">
    <children>
-      <AnchorPane layoutX="27.0" layoutY="28.0" prefHeight="440.0" prefWidth="284.0" style="-fx-background-color: #30000f;">
+      <AnchorPane layoutX="29.0" layoutY="28.0" prefHeight="451.0" prefWidth="284.0" style="-fx-background-color: #111122;">
          <children>
-            <Label layoutX="81.0" layoutY="14.0" text="Register User" textFill="#a13e3e">
+            <Label layoutX="81.0" layoutY="14.0" text="Register User" textFill="#339966">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label layoutX="21.0" layoutY="95.0" prefHeight="27.0" prefWidth="64.0" text="Name" textFill="#a13e3e" />
-            <TextField layoutX="86.0" layoutY="58.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" />
-            <Label layoutX="21.0" layoutY="132.0" prefHeight="27.0" prefWidth="64.0" text="Last name" textFill="#a13e3e" />
-            <Label layoutX="21.0" layoutY="169.0" prefHeight="27.0" prefWidth="64.0" text="Email" textFill="#a13e3e" />
-            <Label layoutX="21.0" layoutY="207.0" prefHeight="27.0" prefWidth="64.0" text="Nick" textFill="#a13e3e" />
-            <Label layoutX="21.0" layoutY="244.0" prefHeight="27.0" prefWidth="64.0" text="Password" textFill="#a13e3e" />
-            <Label layoutX="21.0" layoutY="281.0" prefHeight="27.0" prefWidth="64.0" text="Confirm" textFill="#a13e3e" />
-            <Label layoutX="21.0" layoutY="318.0" prefHeight="27.0" prefWidth="64.0" text="Adress" textFill="#a13e3e" />
-            <Label layoutX="21.0" layoutY="58.0" prefHeight="27.0" prefWidth="64.0" text="ID" textFill="#a13e3e" />
-            <TextField layoutX="86.0" layoutY="95.0" style="-fx-background-color: #a13e3e;" />
-            <TextField layoutX="86.0" layoutY="132.0" style="-fx-background-color: #a13e3e;" />
-            <TextField layoutX="86.0" layoutY="169.0" style="-fx-background-color: #a13e3e;" />
-            <TextField layoutX="86.0" layoutY="207.0" style="-fx-background-color: #a13e3e;" />
-            <TextField layoutX="86.0" layoutY="318.0" style="-fx-background-color: #a13e3e;" />
-            <PasswordField layoutX="86.0" layoutY="244.0" style="-fx-background-color: #a13e3e #a13e3e;" />
-            <PasswordField layoutX="86.0" layoutY="281.0" style="-fx-background-color: #a13e3e #a13e3e;" />
-            <Button layoutX="86.0" layoutY="379.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" text="Register" textFill="#e4b5b5" />
+            <Label layoutX="21.0" layoutY="95.0" prefHeight="27.0" prefWidth="64.0" text="Name" textFill="#339966" />
+            <TextField fx:id="id_registerUser" layoutX="86.0" layoutY="58.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <Label layoutX="21.0" layoutY="132.0" prefHeight="27.0" prefWidth="64.0" text="Last name" textFill="#339966" />
+            <Label layoutX="21.0" layoutY="169.0" prefHeight="27.0" prefWidth="64.0" text="Email" textFill="#339966" />
+            <Label layoutX="21.0" layoutY="207.0" prefHeight="27.0" prefWidth="64.0" text="Nick" textFill="#339966" />
+            <Label layoutX="21.0" layoutY="244.0" prefHeight="27.0" prefWidth="64.0" text="Password" textFill="#339966" />
+            <Label layoutX="21.0" layoutY="281.0" prefHeight="27.0" prefWidth="64.0" text="Confirm" textFill="#339966" />
+            <Label layoutX="21.0" layoutY="318.0" prefHeight="27.0" prefWidth="64.0" text="Address" textFill="#339966" />
+            <Label layoutX="21.0" layoutY="58.0" prefHeight="27.0" prefWidth="64.0" text="ID" textFill="#339966" />
+            <TextField fx:id="name_registerUser" layoutX="86.0" layoutY="95.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <TextField fx:id="lastName_registerUser" layoutX="86.0" layoutY="132.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <TextField fx:id="email_registerUser" layoutX="86.0" layoutY="169.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <TextField fx:id="nick_registerUser" layoutX="86.0" layoutY="207.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <TextField fx:id="address_registerUser" layoutX="86.0" layoutY="318.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <PasswordField fx:id="password_registerUser" layoutX="86.0" layoutY="244.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <PasswordField fx:id="confirm_registerUser" layoutX="86.0" layoutY="281.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <Button fx:id="register_registerUser" layoutX="86.0" layoutY="410.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Register" textFill="#e4b5b5" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="336.0" layoutY="28.0" prefHeight="440.0" prefWidth="284.0" style="-fx-background-color: #30000f;">
+      <AnchorPane layoutX="336.0" layoutY="28.0" prefHeight="284.0" prefWidth="284.0" style="-fx-background-color: #111122;">
          <children>
-            <Label layoutX="101.0" layoutY="14.0" text="Edit User" textFill="#a13e3e">
+            <Label layoutX="101.0" layoutY="14.0" text="Edit User" textFill="#339966">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label layoutX="21.0" layoutY="95.0" prefHeight="27.0" prefWidth="64.0" text="Name" textFill="#a13e3e" />
-            <TextField layoutX="86.0" layoutY="58.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" />
-            <Label layoutX="21.0" layoutY="132.0" prefHeight="27.0" prefWidth="64.0" text="Last name" textFill="#a13e3e" />
-            <Label layoutX="21.0" layoutY="169.0" prefHeight="27.0" prefWidth="64.0" text="Email" textFill="#a13e3e" />
-            <Label layoutX="21.0" layoutY="206.0" prefHeight="27.0" prefWidth="64.0" text="Adress" textFill="#a13e3e" />
-            <Label layoutX="21.0" layoutY="58.0" prefHeight="27.0" prefWidth="64.0" text="ID" textFill="#a13e3e" />
-            <TextField layoutX="86.0" layoutY="95.0" style="-fx-background-color: #a13e3e;" />
-            <TextField layoutX="86.0" layoutY="132.0" style="-fx-background-color: #a13e3e;" />
-            <TextField layoutX="86.0" layoutY="169.0" style="-fx-background-color: #a13e3e;" />
-            <TextField layoutX="86.0" layoutY="206.0" style="-fx-background-color: #a13e3e;" />
-            <Button layoutX="86.0" layoutY="379.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #a13e3e;" text="Edit" textFill="#e4b5b5" />
+            <Label layoutX="21.0" layoutY="95.0" prefHeight="27.0" prefWidth="64.0" text="Name" textFill="#339966" />
+            <TextField fx:id="id_editUser" layoutX="86.0" layoutY="58.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <Label layoutX="21.0" layoutY="132.0" prefHeight="27.0" prefWidth="64.0" text="Last name" textFill="#339966" />
+            <Label layoutX="21.0" layoutY="169.0" prefHeight="27.0" prefWidth="64.0" text="Email" textFill="#339966" />
+            <Label layoutX="21.0" layoutY="206.0" prefHeight="27.0" prefWidth="64.0" text="Address" textFill="#339966" />
+            <Label layoutX="21.0" layoutY="58.0" prefHeight="27.0" prefWidth="64.0" text="ID" textFill="#339966" />
+            <TextField fx:id="name_editUser" layoutX="86.0" layoutY="95.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <TextField fx:id="lastName_editUser" layoutX="86.0" layoutY="132.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <TextField fx:id="email_editUser" layoutX="86.0" layoutY="169.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <TextField fx:id="address_editUser" layoutX="86.0" layoutY="206.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <Button fx:id="edit_editUser" layoutX="86.0" layoutY="242.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Edit" textFill="#e4b5b5" />
          </children>
       </AnchorPane>
-      <Button layoutX="645.0" layoutY="28.0" mnemonicParsing="false" prefHeight="440.0" prefWidth="27.0" style="-fx-background-color: #30000f #30000f;" text="&gt;" />
+      <Button fx:id="go_consultas" layoutX="645.0" layoutY="28.0" mnemonicParsing="false" prefHeight="602.0" prefWidth="27.0" style="-fx-background-color: #111122;" text="&gt;" />
+      <AnchorPane layoutX="336.0" layoutY="328.0" prefHeight="149.0" prefWidth="284.0" style="-fx-background-color: #111122;">
+         <children>
+            <Label layoutX="115.0" layoutY="7.0" text="Phone" textFill="#339966">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="34.0" prefHeight="27.0" prefWidth="64.0" text="Number" textFill="#339966" />
+            <TextField fx:id="number_phone" layoutX="90.0" layoutY="35.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <Button fx:id="add_phone" layoutX="91.0" layoutY="111.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Add" textFill="#e4b5b5" />
+            <Label layoutX="26.0" layoutY="69.0" prefHeight="27.0" prefWidth="64.0" text="Nick" textFill="#339966" />
+            <TextField fx:id="nick_phone" layoutX="91.0" layoutY="70.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="30.0" layoutY="495.0" prefHeight="137.0" prefWidth="591.0" style="-fx-background-color: #111122;">
+         <children>
+            <Label layoutX="246.0" layoutY="8.0" text="Requirements" textFill="#339966">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="113.0" layoutY="34.0" prefHeight="27.0" prefWidth="111.0" text="Increase percentage" textFill="#339966" />
+            <TextField fx:id="percentage_requirement" layoutX="91.0" layoutY="61.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <Button fx:id="add_minimumIncrease" layoutX="402.0" layoutY="96.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Add" textFill="#e4b5b5" />
+            <Label layoutX="425.0" layoutY="34.0" prefHeight="27.0" prefWidth="104.0" text="Minimum increase" textFill="#339966" />
+            <TextField fx:id="minimun_requirement" layoutX="402.0" layoutY="61.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <Button fx:id="add_percentageIncrease" layoutX="91.0" layoutY="96.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Add" textFill="#e4b5b5" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
