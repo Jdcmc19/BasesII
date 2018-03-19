@@ -1,4 +1,4 @@
-package Conexion.Participantes;
+package Conexion.Program;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +15,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class Participante implements Initializable {
+public class ControladorParticipante implements Initializable {
     @FXML
     Button insert_auction,insert_bid,insert_comment,choose_image,go_consultas;
     @FXML

@@ -1,4 +1,4 @@
-package Conexion.Login;
+package Conexion.Program;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Login  implements Initializable {
+public class ControladorLogin implements Initializable {
     @FXML
     Button login_bto_forgotPassword,sign_in;
     @FXML
@@ -27,7 +27,7 @@ public class Login  implements Initializable {
         sign_in.setOnAction(event -> {
             System.out.println("adadaaaa");
             try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("C:/Users/iWorth/IdeaProjects/BasesII/src/Conexion/Administradores/Administrador_GUI.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("_Administrador.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("prueba");

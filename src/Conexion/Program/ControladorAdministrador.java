@@ -1,4 +1,4 @@
-package Conexion.Administradores;
+package Conexion.Program;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Administrador implements Initializable {
+public class ControladorAdministrador implements Initializable {
     @FXML
     Button register_registerUser,edit_editUser,add_phone,add_minimumIncrease,add_percentageIncrease,go_consultas;
     @FXML

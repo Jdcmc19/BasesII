@@ -1,4 +1,4 @@
-package Conexion.Login;
+package Conexion;
 
 public class Connect {
 }

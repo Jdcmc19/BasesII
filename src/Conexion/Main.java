@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Login/Login_GUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Program/_Login.fxml"));
         primaryStage.setTitle("Bases de Datos II");
         primaryStage.setScene(new Scene(root, 670, 500));
         primaryStage.show();

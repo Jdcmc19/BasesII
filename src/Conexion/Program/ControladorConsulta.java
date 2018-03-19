@@ -1,4 +1,4 @@
-package Conexion.Consultas;
+package Conexion.Program;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Consulta implements Initializable {
+public class ControladorConsulta implements Initializable {
     @FXML
     TableView subastas_consulta,ofertas_consulta;
     @FXML
