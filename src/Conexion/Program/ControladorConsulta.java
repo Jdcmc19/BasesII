@@ -1,5 +1,6 @@
 package Conexion.Program;
 
+import Conexion.Connect;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -8,6 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControladorConsulta implements Initializable {
+    Connect con;
+    @FXML
+    Label lblAlias;
     @FXML
     TableView subastas_consulta,ofertas_consulta;
     @FXML
@@ -19,9 +23,17 @@ public class ControladorConsulta implements Initializable {
     @FXML
     ComboBox primary_subasta,secondary_subasta,idsubasta_oferta;
     public void initialize(URL fxmlLocations, ResourceBundle resources){
+
+
         search_subasta.setOnAction(event -> {});
         myAuction_subasta.setOnAction(event -> {});
         bidsAuction_oferta.setOnAction(event -> {});
         myBid_oferta.setOnAction(event -> {});
+    }
+    public void setCon(Connect con) {
+        this.con = con;
+    }
+    public void setAlias(){
+        lblAlias.setText(con.getUsername());
     }
 }

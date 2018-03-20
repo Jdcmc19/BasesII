@@ -89,5 +89,10 @@
             <Button fx:id="add_percentageIncrease" layoutX="91.0" layoutY="96.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Add" textFill="#e4b5b5" />
          </children>
       </AnchorPane>
+      <Label fx:id="lblAlias" layoutX="30.0" prefHeight="27.0" prefWidth="84.0" text="ALIAS" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

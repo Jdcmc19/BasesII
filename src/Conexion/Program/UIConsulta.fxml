@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -54,5 +55,10 @@
             <Image url="@../../Imagenes/Lupa.png" />
          </image>
       </ImageView>
+      <Label fx:id="lblAlias" layoutX="31.0" prefHeight="27.0" prefWidth="84.0" text="ALIAS" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

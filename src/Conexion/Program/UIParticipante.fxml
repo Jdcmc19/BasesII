@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="557.0" prefWidth="676.0" style="-fx-background-color: #000012;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Conexion.Program.ControladorParticipante">
+<AnchorPane prefHeight="693.0" prefWidth="676.0" style="-fx-background-color: #000012;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Conexion.Program.ControladorParticipante">
    <children>
       <AnchorPane layoutX="352.0" layoutY="35.0" prefHeight="240.0" prefWidth="274.0" style="-fx-background-color: #111122;">
          <children>
@@ -69,19 +69,38 @@
       <AnchorPane layoutX="352.0" layoutY="303.0" prefHeight="232.0" prefWidth="274.0" style="-fx-background-color: #111122;">
          <children>
             <Label layoutX="19.0" layoutY="58.0" prefHeight="27.0" prefWidth="71.0" text="Auction" textFill="#339966" />
-            <Label layoutX="80.0" layoutY="14.0" text="Comments" textFill="#339966">
+            <Label layoutX="53.0" layoutY="14.0" prefHeight="35.0" prefWidth="178.0" text="Seller Comment" textFill="#339966">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="insert_comment" layoutX="90.0" layoutY="185.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Insert" textFill="#eedede" />
+            <Button fx:id="insert_commentS" layoutX="90.0" layoutY="185.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Insert" textFill="#eedede" />
             <Label layoutX="19.0" layoutY="96.0" prefHeight="27.0" prefWidth="71.0" text="Comment" textFill="#339966" />
-            <ComboBox fx:id="auction_comment" layoutX="90.0" layoutY="58.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
-            <ComboBox fx:id="calification_comment" layoutX="90.0" layoutY="133.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <ComboBox fx:id="auction_commentS" layoutX="90.0" layoutY="58.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <ComboBox fx:id="calification_commentS" layoutX="90.0" layoutY="133.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
             <Label layoutX="19.0" layoutY="133.0" prefHeight="27.0" prefWidth="71.0" text="Calification" textFill="#339966" />
-            <TextField fx:id="comment_comments" layoutX="90.0" layoutY="96.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <TextField fx:id="comment_commentsS" layoutX="90.0" layoutY="96.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
          </children>
       </AnchorPane>
-      <Button fx:id="go_consultas" layoutX="649.0" layoutY="33.0" mnemonicParsing="false" prefHeight="500.0" prefWidth="27.0" style="-fx-background-color: #111122;" text="&gt;" />
+      <Button fx:id="go_consultas" layoutX="649.0" layoutY="33.0" mnemonicParsing="false" prefHeight="644.0" prefWidth="27.0" style="-fx-background-color: #111122;" text="&gt;" />
+      <Label fx:id="lblAlias" layoutX="33.0" layoutY="5.0" prefHeight="27.0" prefWidth="84.0" text="ALIAS" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="33.0" layoutY="559.0" prefHeight="119.0" prefWidth="593.0" style="-fx-background-color: #111122;">
+         <children>
+            <TextField fx:id="comment_commentsB" layoutX="412.0" layoutY="46.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <ComboBox fx:id="auction_commentB" layoutX="91.0" layoutY="46.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
+            <Label layoutX="341.0" layoutY="46.0" prefHeight="27.0" prefWidth="71.0" text="Comment" textFill="#339966" />
+            <Label layoutX="217.0" layoutY="-3.0" text="Buyer Comment" textFill="#339966">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="46.0" prefHeight="27.0" prefWidth="71.0" text="Auction" textFill="#339966" />
+            <Button fx:id="insert_commentB" layoutX="412.0" layoutY="82.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Insert" textFill="#eedede" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

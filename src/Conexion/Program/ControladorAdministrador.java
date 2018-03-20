@@ -1,8 +1,10 @@
 package Conexion.Program;
 
+import Conexion.Connect;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -10,6 +12,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControladorAdministrador implements Initializable {
+    Connect con;
+    @FXML
+    Label lblAlias;
     @FXML
     Button register_registerUser,edit_editUser,add_phone,add_minimumIncrease,add_percentageIncrease,go_consultas;
     @FXML
@@ -50,5 +55,11 @@ public class ControladorAdministrador implements Initializable {
             int i = Integer.parseInt(percentage_requirement.getText());
         });
         go_consultas.setOnAction(event -> {});
+    }
+    public void setCon(Connect con) {
+        this.con = con;
+    }
+    public void setAlias(){
+        lblAlias.setText(con.getUsername());
     }
 }

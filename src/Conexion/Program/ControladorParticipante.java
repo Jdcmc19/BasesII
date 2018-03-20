@@ -1,5 +1,6 @@
 package Conexion.Program;
 
+import Conexion.Connect;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -16,16 +17,20 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ControladorParticipante implements Initializable {
+    Connect con;
     @FXML
-    Button insert_auction,insert_bid,insert_comment,choose_image,go_consultas;
+    Label lblAlias;
     @FXML
-    TextField price_auction,delivery_auction,name_item,description_item,comment_comments,auction_bid,price_bid;
+    Button insert_auction,insert_bid,insert_commentS,choose_image,go_consultas,insert_commentB;
+    @FXML
+    TextField price_auction,delivery_auction,name_item,description_item,comment_commentsS,auction_bid,price_bid,comment_commentsB;
     @FXML
     DatePicker until_auction;
     @FXML
-    ComboBox primary_item,secondary_item,auction_comment,calification_comment;
+    ComboBox primary_item,secondary_item,auction_commentS,calification_commentS,auction_commentB;
 
     public void initialize(URL fxmlLocations, ResourceBundle resources){
+
         insert_auction.setOnAction(event -> {
             String name = name_item.getText();
             String description = description_item.getText();
@@ -45,11 +50,21 @@ public class ControladorParticipante implements Initializable {
             BigDecimal price = new BigDecimal(price_bid.getText());
             int auction = Integer.parseInt(auction_bid.getText());
         });
-        insert_comment.setOnAction(event -> {
-            int auction = Integer.parseInt(auction_comment.getValue().toString());
-            String comment = comment_comments.getText();
-            int calificacion = Integer.parseInt(calification_comment.getValue().toString());
+        insert_commentS.setOnAction(event -> {
+            int auction = Integer.parseInt(auction_commentS.getValue().toString());
+            String comment = comment_commentsS.getText();
+            int calificacion = Integer.parseInt(calification_commentS.getValue().toString());
         });
+        insert_commentB.setOnAction(event -> {
+            int auction = Integer.parseInt(auction_commentB.getValue().toString());
+            String comment = comment_commentsB.getText();
+        });
+    }
+    public void setCon(Connect con) {
+        this.con = con;
+    }
+    public void setAlias(){
+        lblAlias.setText(con.getUsername());
     }
 }
 
