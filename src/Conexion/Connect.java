@@ -1,8 +1,12 @@
 package Conexion;
 
+import Conexion.Clases.Comentario;
+import Conexion.Clases.Puja;
+import Conexion.Clases.Subasta;
+import Conexion.Clases.Usuario;
 import oracle.jdbc.OracleTypes;
 
-import java.io.IOException;
+
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,7 +21,7 @@ public class Connect {
     public Connect(String user,String password){
         DB_USER=user;
         DB_PASSWORD=password;
-        connection =getDBConnection();
+        connection = getDBConnection();
     };
 
     private static Connection getDBConnection() {
@@ -48,9 +52,6 @@ public class Connect {
         return dbConnection;
 
     }
-    public Connection getConnection(){
-        return connection;
-    }
     public Boolean isConnected(){
         if(connection == null){
             return false;
@@ -59,6 +60,7 @@ public class Connect {
     }
     public Boolean isAdministrador(){
         CallableStatement callableStatement = null;
+        connection = getDBConnection();
         String code = "{call HR.IS_ADMINISTRADOR(?,?)}";
         try{
             callableStatement = connection.prepareCall(code);
@@ -81,6 +83,7 @@ public class Connect {
     }
     public Boolean isParticipante(){
         CallableStatement callableStatement = null;
+        connection=getDBConnection();
         String code = "{call HR.IS_PARTICIPANTE(?,?)}";
         try{
             callableStatement = connection.prepareCall(code);
@@ -104,36 +107,680 @@ public class Connect {
     public String getUsername(){
         return DB_USER;
     }
-    public void add_telefono(){}
-    public void add_administrador(){}
-    public void add_participante(){}
-    public void mod_usuario(){}
+    public void add_telefono(String alias,int numero)throws SQLException {
+        CallableStatement callableStatement = null;
+        connection = getDBConnection();
 
-    public void add_subasta(){};
-    public void add_oferta(){};
-    public void add_comentario_vendedor(){};
-    public void add_comentario_comprador(){};
+        String code = "{call HR.ADD_TELEFONO(?,?)}";
 
-    public ArrayList<String> listar_subcategorias(){};
-    public ArrayList<String> listar_categorias(){};
+        try {
+            callableStatement = connection.prepareCall(code);
 
-    public ArrayList listar_subasta(){};
-    public ArrayList listar_pujas_subasta(){};
-    public ArrayList listar_subastas_usuario(){};
-    public ArrayList listar_pujas_usuario(){};
+            callableStatement.setString(1, alias);
+            callableStatement.setInt(2, numero);
 
-    public void mod_porcentaje(){};
-    public void mod_minimo(){};
-    public ArrayList listar_idsubastas_completas(){};
+            callableStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    }
+    public void add_administrador(Usuario user,int telefono)throws SQLException{
+        CallableStatement callableStatement = null;
+        connection = getDBConnection();
+
+        int cedula = user.getCedula();
+        String corr = user.getCorreo();
+        String alias = user.getAlias();
+        String nombre = user.getNombre();
+        String apellido = user.getApellido();
+        String dir = user.getDireccion();
+        String passw = user.getPass();
 
 
-    /*HR.ADD_TELEFONO(STRING AL,NUMER IN NUMBER)
+        String code = "{call HR.ADD_ADMINISTRADOR(?,?,?,?,?,?,?,?)}";
+
+        try {
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setInt(1, cedula);
+            callableStatement.setString(2, corr);
+            callableStatement.setString(3, alias);
+            callableStatement.setString(4, nombre);
+            callableStatement.setString(5, apellido);
+            callableStatement.setString(6, dir);
+            callableStatement.setString(7, passw);
+            callableStatement.setInt(8, telefono);
+
+            callableStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    }
+    public void add_participante(Usuario user,int telefono)throws SQLException{
+        CallableStatement callableStatement = null;
+        connection = getDBConnection();
+
+        int cedula = user.getCedula();
+        String corr = user.getCorreo();
+        String alias = user.getAlias();
+        String nombre = user.getNombre();
+        String apellido = user.getApellido();
+        String dir = user.getDireccion();
+        String passw = user.getPass();
+
+
+        String code = "{call HR.ADD_PARTICIPANTE(?,?,?,?,?,?,?,?)}";
+
+        try {
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setInt(1, cedula);
+            callableStatement.setString(2, corr);
+            callableStatement.setString(3, alias);
+            callableStatement.setString(4, nombre);
+            callableStatement.setString(5, apellido);
+            callableStatement.setString(6, dir);
+            callableStatement.setString(7, passw);
+            callableStatement.setInt(8, telefono);
+
+            callableStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    }
+    public void mod_usuario(Usuario user)throws SQLException{
+        CallableStatement callableStatement = null;
+        connection = getDBConnection();
+
+        int cedula = user.getCedula();
+        String corr = user.getCorreo();
+        String nombre = user.getNombre();
+        String apellido = user.getApellido();
+        String dir = user.getDireccion();
+
+
+        String code = "{call HR.ADD_ADMINISTRADOR(?,?,?,?,?)}";
+
+        try {
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setInt(1, cedula);
+            callableStatement.setString(2, corr);
+            callableStatement.setString(3, nombre);
+            callableStatement.setString(4, apellido);
+            callableStatement.setString(5, dir);
+
+
+            callableStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    }
+
+    public void add_subasta(Subasta subasta)throws SQLException{
+        CallableStatement callableStatement = null;
+        connection = getDBConnection();
+
+        BigDecimal precioInicial=subasta.getPrecioInicial();
+        Date fechaFin=subasta.getFechaFinal();
+        String descEntrega=subasta.getDescripcionEntrega();
+        String aliasVendedor=subasta.getAliasVendedor();
+        String nombreItem=subasta.getNombreItem();
+        String descItem=subasta.getDescItem();
+        String primCat=subasta.getPrimCat();
+        String segCat=subasta.getSegCat();
+
+        String code = "{call HR.ADD_SUBASTA(?,?,?,?,?,?,?,?)}";
+
+        try {
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setBigDecimal(1, precioInicial);
+            callableStatement.setDate(2, fechaFin);
+            callableStatement.setString(3, descEntrega);
+            callableStatement.setString(4, aliasVendedor);
+            callableStatement.setString(5, nombreItem);
+            callableStatement.setString(6, descItem);
+            callableStatement.setString(7, primCat);
+            callableStatement.setString(8, segCat);
+
+            callableStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    };
+    public void add_oferta(Puja puja)throws SQLException{
+        CallableStatement callableStatement = null;
+        connection = getDBConnection();
+
+        BigDecimal valorO=puja.getValorOferta();
+        String alias = puja.getAlias();
+        int idsubasta= puja.getId();
+
+
+        String code = "{call HR.ADD_OFERTA(?,?,?)}";
+
+        try {
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setBigDecimal(1, valorO);
+            callableStatement.setString(2, alias);
+            callableStatement.setInt(3, idsubasta);
+
+
+            callableStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    };
+    public void add_comentario_vendedor(int calificacion,String comentario,int idSubasta)throws SQLException{
+        CallableStatement callableStatement = null;
+        connection = getDBConnection();
+
+        String code = "{call HR.ADD_COMENTARIO_VENDEDOR(?,?,?)}";
+
+        try {
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setInt(1, calificacion);
+            callableStatement.setString(2, comentario);
+            callableStatement.setInt(3, idSubasta);
+
+
+            callableStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    };
+    public void add_comentario_comprador(String comentario,int idSubasta)throws SQLException{
+        CallableStatement callableStatement = null;
+        connection = getDBConnection();
+
+        String code = "{call HR.ADD_COMENTARIO_COMPRADOR(?,?)}";
+
+        try {
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setString(1, comentario);
+            callableStatement.setInt(2, idSubasta);
+
+
+            callableStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    };
+
+    public ArrayList<String> listar_subcategorias(String primaria)throws SQLException{
+        ArrayList<String> subcategorias = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.LISTAR_SUBCATEGORIAS(?,?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setString(1, primaria);
+            callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+
+            callableStatement.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement.getObject(2);
+
+            while (rs.next()){
+                subcategorias.add(rs.getString(1));
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return subcategorias;
+
+    };
+    public ArrayList<String> listar_categorias()throws SQLException{
+        ArrayList<String> categorias = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.LISTAR_CATEGORIAS(?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.registerOutParameter(1, OracleTypes.CURSOR);
+
+            callableStatement.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement.getObject(1);
+
+            while (rs.next()){
+                categorias.add(rs.getString(1));
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return categorias;
+
+    };
+
+    public ArrayList<Subasta> listar_subasta(String primCat,String segCat)throws SQLException{
+        ArrayList<Subasta> consulta = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.LISTAR_SUBASTA(?,?,?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setString(1,primCat);
+            callableStatement.setString(2,segCat);
+            callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
+
+            callableStatement.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement.getObject(3);
+
+            int idSubasta;
+            BigDecimal precioInicial;
+            Date fechaFinal;
+            String descEntrega;
+            String aliasUsuario;
+            String itemNombre;
+
+            while (rs.next()){
+                idSubasta = rs.getInt(1);
+                precioInicial = rs.getBigDecimal(2);
+                fechaFinal = rs.getDate(3);
+                descEntrega = rs.getString(4);
+                aliasUsuario = rs.getString(5);
+                itemNombre = rs.getString(6);
+                Subasta s = new Subasta(precioInicial,fechaFinal,descEntrega,aliasUsuario,itemNombre,"","","",idSubasta);
+                consulta.add(s);
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return consulta;
+    };
+    public ArrayList<Puja> listar_pujas_subasta(int idSubasta)throws SQLException{
+        ArrayList<Puja> consulta = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.LISTAR_PUJAS_SUBASTA(?,?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setInt(1,idSubasta);
+            callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+
+            callableStatement.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement.getObject(2);
+
+            int id;
+            BigDecimal valoroferta;
+            Date fecha;
+            String aliasUsuario;
+            String itemNombre;
+
+            while (rs.next()){
+                id = rs.getInt(1);
+                fecha = rs.getDate(2);
+                valoroferta = rs.getBigDecimal(3);
+                aliasUsuario = rs.getString(4);
+                itemNombre = rs.getString(5);
+                Puja s = new Puja(valoroferta,aliasUsuario,id,itemNombre,fecha);
+                consulta.add(s);
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return consulta;
+    };
+    public ArrayList<Comentario> listar_subastas_usuario(String alias)throws SQLException{
+        ArrayList<Comentario> consulta = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.LISTAR_SUBASTAS_USUARIO(?,?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setString(1,alias);
+            callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+
+            callableStatement.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement.getObject(2);
+
+
+            String itemNombre;
+            BigDecimal precioInicial;
+            BigDecimal valoroferta;
+            String comentario;
+
+            while (rs.next()){
+                itemNombre = rs.getString(1);
+                precioInicial = rs.getBigDecimal(2);
+                valoroferta = rs.getBigDecimal(3);
+                comentario = rs.getString(4);
+                Comentario s = new Comentario(itemNombre,precioInicial,valoroferta,comentario);
+                consulta.add(s);
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return consulta;
+    };
+    public ArrayList<Comentario> listar_pujas_usuario(String alias)throws SQLException{
+        ArrayList<Comentario> consulta = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.LISTAR_PUJAS_USUARIO(?,?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setString(1,alias);
+            callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+
+            callableStatement.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement.getObject(2);
+
+
+            String itemNombre;
+            BigDecimal precioInicial;
+            BigDecimal valoroferta;
+            String comentario;
+
+            while (rs.next()){
+                itemNombre = rs.getString(1);
+                precioInicial = rs.getBigDecimal(2);
+                valoroferta = rs.getBigDecimal(3);
+                comentario = rs.getString(4);
+                Comentario s = new Comentario(itemNombre,precioInicial,valoroferta,comentario);
+                consulta.add(s);
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return consulta;
+    };
+
+    public void mod_porcentaje(int porcen)throws SQLException{
+        ArrayList<Comentario> consulta = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.MOD_PORCENTAJE(?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setInt(1,porcen);
+
+            callableStatement.executeUpdate();
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    };
+    public void mod_minimo(int minim)throws SQLException{
+        ArrayList<Comentario> consulta = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.MOD_MINIMO(?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setInt(1,minim);
+
+            callableStatement.executeUpdate();
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    };
+    public ArrayList<Integer> listar_idsubastas_completas()throws SQLException{
+        ArrayList<Integer> consulta = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.LISTAR_IDSUBASTAS_COMPLETAS(?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.registerOutParameter(1, OracleTypes.CURSOR);
+
+            callableStatement.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement.getObject(1);
+
+            while (rs.next()){
+                consulta.add(rs.getInt(1));
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return consulta;
+    };
+
+
+    /*
 HR.ADD_ADMINISTRADOR(CED IN NUMBER ,COR IN VARCHAR2 , AL IN VARCHAR2 , NOM IN VARCHAR2 , APE IN VARCHAR2 , DIR IN VARCHAR2, PASS IN CLOB,TEL IN NUMBER)
 HR.ADD_PARTICIPANTE(CED IN NUMBER ,COR IN VARCHAR2, AL IN VARCHAR2 , NOM IN VARCHAR2 , APE IN VARCHAR2 , DIR IN VARCHAR2, PASS IN CLOB, TEL IN NUMBER)
 HR.MOD_USUARIO(CED IN NUMBER ,COR IN VARCHAR2, NOM IN VARCHAR2 , APE IN VARCHAR2 , DIR IN VARCHAR2)
 
-
-HR.ADD_ITEM(nom IN VARCHAR2, descr IN VARCHAR2, prim IN VARCHAR2, segu IN VARCHAR2)
 HR.ADD_SUBASTA(precIn IN NUMBER,fechaFin IN DATE,descrEntrega IN VARCHAR2,aliasVende IN VARCHAR2,nomItem IN VARCHAR2, descItem IN VARCHAR2, primCat IN VARCHAR2,segCat IN VARCHAR2)
 HR.ADD_OFERTA(valorO IN NUMBER, ali IN VARCHAR,subast IN NUMBER)
 HR.ADD_COMENTARIO_COMPRADOR(COMM IN VARCHAR,IDSU IN NUMBER)

@@ -9,6 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ControladorAdministrador implements Initializable {
@@ -47,6 +48,13 @@ public class ControladorAdministrador implements Initializable {
         add_phone.setOnAction(event -> {
             int number  = Integer.parseInt(number_phone.getText());
             String nick = nick_phone.getText();
+
+            try {
+                con.add_telefono(nick,number);
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
         });
         add_minimumIncrease.setOnAction(event -> {
             int i = Integer.parseInt(minimun_requirement.getText());

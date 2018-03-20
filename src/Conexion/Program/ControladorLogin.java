@@ -27,11 +27,14 @@ public class ControladorLogin implements Initializable {
 
         });
         sign_in.setOnAction(event -> {
+            System.out.println("aaaaaaaaaa");
             String user = username.getText();
             String pass = password.getText();
             con = new Connect(user,pass);
             if(con.isConnected()){
+                System.out.println("bbbbbbbb");
                 if(con.isAdministrador()){
+                    System.out.println("ccccccc");
                     try{
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UIAdministrador.fxml"));
                         Parent root = (Parent) fxmlLoader.load();
