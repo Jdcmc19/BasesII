@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="655.0" prefWidth="672.0" style="-fx-background-color: #000013;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Conexion.Program.ControladorAdministrador">
+<AnchorPane prefHeight="655.0" prefWidth="672.0" style="-fx-background-color: #000013;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Conexion.Program.ControladorAdministrador">
    <children>
       <AnchorPane layoutX="29.0" layoutY="28.0" prefHeight="451.0" prefWidth="284.0" style="-fx-background-color: #111122;">
          <children>
@@ -37,6 +34,9 @@
             <PasswordField fx:id="password_registerUser" layoutX="86.0" layoutY="244.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
             <PasswordField fx:id="confirm_registerUser" layoutX="86.0" layoutY="281.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
             <Button fx:id="register_registerUser" layoutX="86.0" layoutY="410.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" text="Register" textFill="#e4b5b5" />
+            <CheckBox fx:id="checkAdmi" layoutX="86.0" layoutY="387.0" mnemonicParsing="false" text="Make administrator" textFill="#339966" />
+            <Label layoutX="21.0" layoutY="354.0" prefHeight="27.0" prefWidth="64.0" text="Address" textFill="#339966" />
+            <TextField fx:id="tel_registerUser" layoutX="86.0" layoutY="354.0" prefHeight="27.0" prefWidth="167.0" style="-fx-background-color: #339966;" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="336.0" layoutY="28.0" prefHeight="284.0" prefWidth="284.0" style="-fx-background-color: #111122;">

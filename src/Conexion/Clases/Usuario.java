@@ -19,6 +19,14 @@ public class Usuario {
         this.pass = pass;
     }
 
+    public Usuario(int cedula, String correo, String nombre, String apellido, String direccion) {
+        this.cedula = cedula;
+        this.correo = correo;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+    }
+
     public int getCedula() {
         return cedula;
     }
