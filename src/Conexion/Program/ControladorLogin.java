@@ -65,7 +65,7 @@ public class ControladorLogin implements Initializable {
                     }catch (IOException e){
                         e.printStackTrace();
                     }
-                }//TODO QUE NO CONECTE POR QUE NO ES PARTICIPANTE NI USUARIO
+                }//TODO QUE NO CONECTE POR QUE NO ES PARTICIPANTE NI USUARIOs
             }//TODO QUE SI NO SE CONECTA SALGA UNA VENTANA DE QUE INTENTE DE NUEVO
         });
     }
