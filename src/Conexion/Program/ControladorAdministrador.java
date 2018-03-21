@@ -3,9 +3,14 @@ package Conexion.Program;
 import Conexion.Clases.Usuario;
 import Conexion.Connect;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -91,7 +96,24 @@ public class ControladorAdministrador implements Initializable {
                 con.mod_porcentaje(i);
             }catch(SQLException e){e.printStackTrace();}
         });
-        go_consultas.setOnAction(event -> {});
+        go_consultas.setOnAction(event -> {
+            try{
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UIConsulta.fxml"));
+                Parent root = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Consulta");
+                stage.setScene(new Scene(root));
+                stage.show();
+
+                ControladorConsulta a = fxmlLoader.getController();
+                a.setCon(con);
+                a.setAlias();
+                a.rellenarComboboxPrimario();
+                a.rellenarComboboxIdSubasta();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        });
     }
     public void setCon(Connect con) {
         this.con = con;

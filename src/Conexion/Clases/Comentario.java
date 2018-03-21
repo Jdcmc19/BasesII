@@ -1,26 +1,28 @@
 package Conexion.Clases;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.math.BigDecimal;
 
 public class Comentario {
-    private String nombreItem;
+    private SimpleStringProperty nombreItem;
     private BigDecimal precioBase;
     private BigDecimal precioFinal;
-    private String comentario;
+    private SimpleStringProperty comentario;
 
     public Comentario(String nombreItem, BigDecimal precioBase, BigDecimal precioFinal, String comentario) {
-        this.nombreItem = nombreItem;
+        this.nombreItem = new SimpleStringProperty(nombreItem);
         this.precioBase = precioBase;
         this.precioFinal = precioFinal;
-        this.comentario = comentario;
+        this.comentario = new SimpleStringProperty(comentario);
     }
 
     public String getNombreItem() {
-        return nombreItem;
+        return nombreItem.get();
     }
 
     public void setNombreItem(String nombreItem) {
-        this.nombreItem = nombreItem;
+        this.nombreItem = new SimpleStringProperty(nombreItem);
     }
 
     public BigDecimal getPrecioBase() {
@@ -40,10 +42,10 @@ public class Comentario {
     }
 
     public String getComentario() {
-        return comentario;
+        return comentario.get();
     }
 
     public void setComentario(String comentario) {
-        this.comentario = comentario;
+        this.comentario = new SimpleStringProperty(comentario);
     }
 }

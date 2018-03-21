@@ -274,7 +274,7 @@ public class Connect {
         connection = getDBConnection();
 
         BigDecimal precioInicial=subasta.getPrecioInicial();
-        Date fechaFin=subasta.getFechaFinal();
+        Timestamp fechaFin=subasta.getFechaFinal();
         String descEntrega=subasta.getDescripcionEntrega();
         String aliasVendedor=subasta.getAliasVendedor();
         String nombreItem=subasta.getNombreItem();
@@ -288,7 +288,7 @@ public class Connect {
             callableStatement = connection.prepareCall(code);
 
             callableStatement.setBigDecimal(1, precioInicial);
-            callableStatement.setDate(2, fechaFin);
+            callableStatement.setTimestamp(2, fechaFin);
             callableStatement.setString(3, descEntrega);
             callableStatement.setString(4, aliasVendedor);
             callableStatement.setString(5, nombreItem);
@@ -508,7 +508,7 @@ public class Connect {
 
             int idSubasta;
             BigDecimal precioInicial;
-            Date fechaFinal;
+            Timestamp fechaFinal;
             String descEntrega;
             String aliasUsuario;
             String itemNombre;
@@ -516,7 +516,7 @@ public class Connect {
             while (rs.next()){
                 idSubasta = rs.getInt(1);
                 precioInicial = rs.getBigDecimal(2);
-                fechaFinal = rs.getDate(3);
+                fechaFinal = rs.getTimestamp(3);
                 descEntrega = rs.getString(4);
                 aliasUsuario = rs.getString(5);
                 itemNombre = rs.getString(6);
@@ -558,13 +558,13 @@ public class Connect {
 
             int id;
             BigDecimal valoroferta;
-            Date fecha;
+            Timestamp fecha;
             String aliasUsuario;
             String itemNombre;
 
             while (rs.next()){
                 id = rs.getInt(1);
-                fecha = rs.getDate(2);
+                fecha = rs.getTimestamp(2);
                 valoroferta = rs.getBigDecimal(3);
                 aliasUsuario = rs.getString(4);
                 itemNombre = rs.getString(5);
@@ -774,7 +774,78 @@ public class Connect {
         }
         return consulta;
     };
+    public ArrayList<Integer> listar_idsubastas_vendedor(String alias)throws SQLException{
+        ArrayList<Integer> consulta = new ArrayList<>();
 
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.LISTAR_IDSUBASTAS_VENDEDOR(?,?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setString(1,alias);
+            callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+
+            callableStatement.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement.getObject(2);
+
+            while (rs.next()){
+                consulta.add(rs.getInt(1));
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return consulta;
+    };
+    public ArrayList<Integer> listar_idsubastas_comprador(String alias)throws SQLException{
+        ArrayList<Integer> consulta = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.LISTAR_IDSUBASTAS_COMPRADOR(?,?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setString(1,alias);
+            callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+
+            callableStatement.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement.getObject(2);
+
+            while (rs.next()){
+                consulta.add(rs.getInt(1));
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return consulta;
+    };
 
     /*
 HR.ADD_ADMINISTRADOR(CED IN NUMBER ,COR IN VARCHAR2 , AL IN VARCHAR2 , NOM IN VARCHAR2 , APE IN VARCHAR2 , DIR IN VARCHAR2, PASS IN CLOB,TEL IN NUMBER)

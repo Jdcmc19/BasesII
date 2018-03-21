@@ -1,40 +1,44 @@
 package Conexion.Clases;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.sql.Timestamp;
+
 
 public class Subasta {
     private BigDecimal precioInicial;
-    private Date fechaFinal;
-    private String descripcionEntrega;
-    private String aliasVendedor;
-    private String nombreItem;
-    private String descItem;
-    private String primCat;
-    private String segCat;
-    private int id;
+    private Timestamp fechaFinal;
+    private SimpleStringProperty descripcionEntrega;
+    private SimpleStringProperty aliasVendedor;
+    private SimpleStringProperty nombreItem;
+    private SimpleStringProperty descItem;
+    private SimpleStringProperty primCat;
+    private SimpleStringProperty segCat;
+    private SimpleIntegerProperty id;
 
-    public Subasta(BigDecimal precioInicial, Date fechaFinal, String descripcionEntrega, String aliasVendedor, String nombreItem, String descItem, String primCat, String segCat) {
+    public Subasta(BigDecimal precioInicial, Timestamp fechaFinal, String descripcionEntrega, String aliasVendedor, String nombreItem, String descItem, String primCat, String segCat) {
         this.precioInicial = precioInicial;
         this.fechaFinal = fechaFinal;
-        this.descripcionEntrega = descripcionEntrega;
-        this.aliasVendedor = aliasVendedor;
-        this.nombreItem = nombreItem;
-        this.descItem = descItem;
-        this.primCat = primCat;
-        this.segCat = segCat;
+        this.descripcionEntrega = new SimpleStringProperty(descripcionEntrega);
+        this.aliasVendedor = new SimpleStringProperty(aliasVendedor);
+        this.nombreItem = new SimpleStringProperty(nombreItem);
+        this.descItem = new SimpleStringProperty(descItem);
+        this.primCat = new SimpleStringProperty(primCat);
+        this.segCat = new SimpleStringProperty(segCat);
     }
 
-    public Subasta(BigDecimal precioInicial, Date fechaFinal, String descripcionEntrega, String aliasVendedor, String nombreItem, String descItem, String primCat, String segCat, int id) {
+    public Subasta(BigDecimal precioInicial, Timestamp fechaFinal, String descripcionEntrega, String aliasVendedor, String nombreItem, String descItem, String primCat, String segCat, int id) {
         this.precioInicial = precioInicial;
         this.fechaFinal = fechaFinal;
-        this.descripcionEntrega = descripcionEntrega;
-        this.aliasVendedor = aliasVendedor;
-        this.nombreItem = nombreItem;
-        this.descItem = descItem;
-        this.primCat = primCat;
-        this.segCat = segCat;
-        this.id = id;
+        this.descripcionEntrega = new SimpleStringProperty(descripcionEntrega);
+        this.aliasVendedor = new SimpleStringProperty(aliasVendedor);
+        this.nombreItem = new SimpleStringProperty(nombreItem);
+        this.descItem =new SimpleStringProperty( descItem);
+        this.primCat = new SimpleStringProperty(primCat);
+        this.segCat =new SimpleStringProperty( segCat);
+        this.id = new SimpleIntegerProperty(id);
     }
 
     public BigDecimal getPrecioInicial() {
@@ -45,67 +49,67 @@ public class Subasta {
         this.precioInicial = precioInicial;
     }
 
-    public Date getFechaFinal() {
+    public Timestamp getFechaFinal() {
         return fechaFinal;
     }
 
-    public void setFechaFinal(Date fechaFinal) {
+    public void setFechaFinal(Timestamp fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
 
     public String getDescripcionEntrega() {
-        return descripcionEntrega;
+        return descripcionEntrega.get();
     }
 
     public void setDescripcionEntrega(String descripcionEntrega) {
-        this.descripcionEntrega = descripcionEntrega;
+        this.descripcionEntrega = new SimpleStringProperty(descripcionEntrega);
     }
 
     public String getAliasVendedor() {
-        return aliasVendedor;
+        return aliasVendedor.get();
     }
 
     public void setAliasVendedor(String aliasVendedor) {
-        this.aliasVendedor = aliasVendedor;
+        this.aliasVendedor = new SimpleStringProperty(aliasVendedor);
     }
 
     public String getNombreItem() {
-        return nombreItem;
+        return nombreItem.get();
     }
 
     public void setNombreItem(String nombreItem) {
-        this.nombreItem = nombreItem;
+        this.nombreItem = new SimpleStringProperty(nombreItem);
     }
 
     public String getDescItem() {
-        return descItem;
+        return descItem.get();
     }
 
     public void setDescItem(String descItem) {
-        this.descItem = descItem;
+        this.descItem = new SimpleStringProperty(descItem);
     }
 
     public String getPrimCat() {
-        return primCat;
+        return primCat.get();
     }
 
     public void setPrimCat(String primCat) {
-        this.primCat = primCat;
+        this.primCat = new SimpleStringProperty(primCat);
     }
 
     public String getSegCat() {
-        return segCat;
+        return segCat.get();
     }
 
     public void setSegCat(String segCat) {
-        this.segCat = segCat;
+        this.segCat = new SimpleStringProperty(segCat);
     }
 
     public int getId() {
-        return id;
+        return id.get();
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = new SimpleIntegerProperty(id);
     }
 }

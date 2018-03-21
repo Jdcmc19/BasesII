@@ -62,6 +62,10 @@ public class ControladorLogin implements Initializable {
                         ControladorParticipante a = fxmlLoader.getController();
                         a.setCon(con);
                         a.setAlias();
+                        a.rellenarComboboxPrimario();
+                        a.rellenarComboboxIdSubastaComprador();
+                        a.rellenarComboboxIdSubastaVendedor();
+                        a.rellenarComboboxIdSubasta();
                     }catch (IOException e){
                         e.printStackTrace();
                     }

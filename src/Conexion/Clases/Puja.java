@@ -1,27 +1,30 @@
 package Conexion.Clases;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Puja {
     private BigDecimal valorOferta;
-    private String alias;
-    private int id;
-    private String itemName;
-    private Date fecha;
+    private SimpleStringProperty alias;
+    private SimpleIntegerProperty id;
+    private SimpleStringProperty itemName;
+    private Timestamp fecha;
 
-    public Puja(BigDecimal valorOferta, String alias, int id, String itemName, Date fecha) {
+    public Puja(BigDecimal valorOferta, String alias, int id, String itemName, Timestamp fecha) {
         this.valorOferta = valorOferta;
-        this.alias = alias;
-        this.id = id;
-        this.itemName = itemName;
+        this.alias = new SimpleStringProperty(alias);
+        this.id = new SimpleIntegerProperty(id);
+        this.itemName = new SimpleStringProperty(itemName);
         this.fecha = fecha;
     }
 
     public Puja(BigDecimal valorOferta, String alias, int id) {
         this.valorOferta = valorOferta;
-        this.alias = alias;
-        this.id = id;
+        this.alias = new SimpleStringProperty(alias);
+        this.id = new SimpleIntegerProperty(id);
     }
 
     public BigDecimal getValorOferta() {
@@ -33,34 +36,34 @@ public class Puja {
     }
 
     public String getAlias() {
-        return alias;
+        return alias.get();
     }
 
     public void setAlias(String alias) {
-        this.alias = alias;
+        this.alias = new SimpleStringProperty(alias);
     }
 
     public int getId() {
-        return id;
+        return id.get();
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = new SimpleIntegerProperty(id);
     }
 
     public String getItemName() {
-        return itemName;
+        return itemName.get();
     }
 
     public void setItemName(String itemName) {
-        this.itemName = itemName;
+        this.itemName = new SimpleStringProperty(itemName);
     }
 
-    public Date getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 }
