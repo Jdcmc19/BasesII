@@ -10,6 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 import java.math.BigDecimal;
 import java.net.URL;
@@ -19,8 +22,11 @@ import java.util.ResourceBundle;
 
 public class ControladorConsulta implements Initializable {
     Connect con;
+
     @FXML
     Label lblAlias;
+    @FXML
+    ImageView imagen_item;
     @FXML
     TableView<Subasta> subastas_consulta;
     @FXML
@@ -60,6 +66,16 @@ public class ControladorConsulta implements Initializable {
         inicial_comentario.setCellValueFactory(new PropertyValueFactory<Comentario,BigDecimal>("precioBase"));
         final_comentario.setCellValueFactory(new PropertyValueFactory<Comentario,BigDecimal>("precioFinal"));
         comment_comentario.setCellValueFactory(new PropertyValueFactory<Comentario,String>("comentario"));
+
+        subastas_consulta.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                try{
+                    Subasta s = subastas_consulta.getSelectionModel().getSelectedItem();
+                    String path = con.get_imagen(s.getNombreItem());
+                    imagen_item.setImage(new Image("file:"+path));
+                }catch(SQLException e){e.printStackTrace();}
+            }
+        });
         //1
         search_subasta.setOnAction(event -> {
             try {

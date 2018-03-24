@@ -846,7 +846,72 @@ public class Connect {
         }
         return consulta;
     };
+    public ArrayList<Integer> add_imagen(String nombre,String path)throws SQLException{
+        ArrayList<Integer> consulta = new ArrayList<>();
 
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.ADD_IMAGEN(?,?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setString(1,nombre);
+            callableStatement.setString(2, path);
+
+            callableStatement.executeUpdate();
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return consulta;
+    };
+    public String get_imagen(String nombre)throws SQLException{
+        ArrayList<Integer> consulta = new ArrayList<>();
+
+        CallableStatement callableStatement = null;
+        connection=getDBConnection();
+        String code = "{call HR.GET_IMAGEN(?,?)}";
+        try{
+            callableStatement = connection.prepareCall(code);
+
+            callableStatement.setString(1,nombre);
+            callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+
+            callableStatement.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement.getObject(2);
+
+            while (rs.next()){
+                return rs.getString(1);
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+
+            if (callableStatement != null) {
+                callableStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+        return null;
+    };
     /*
 HR.ADD_ADMINISTRADOR(CED IN NUMBER ,COR IN VARCHAR2 , AL IN VARCHAR2 , NOM IN VARCHAR2 , APE IN VARCHAR2 , DIR IN VARCHAR2, PASS IN CLOB,TEL IN NUMBER)
 HR.ADD_PARTICIPANTE(CED IN NUMBER ,COR IN VARCHAR2, AL IN VARCHAR2 , NOM IN VARCHAR2 , APE IN VARCHAR2 , DIR IN VARCHAR2, PASS IN CLOB, TEL IN NUMBER)

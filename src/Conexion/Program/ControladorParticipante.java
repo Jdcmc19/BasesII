@@ -32,6 +32,7 @@ import java.util.ResourceBundle;
 
 public class ControladorParticipante implements Initializable {
     Connect con;
+    String path;
     @FXML
     Label lblAlias;
     @FXML
@@ -76,6 +77,8 @@ public class ControladorParticipante implements Initializable {
             Subasta subasta = new Subasta(price,date,delivery,con.getUsername(),name,description,primary,secondary);
             try{
                 con.add_subasta(subasta);
+                con.add_imagen(name,path);
+                path="";
             }catch (SQLException e){e.printStackTrace();}
             rellenarComboboxIdSubastaVendedor();
 
@@ -85,8 +88,8 @@ public class ControladorParticipante implements Initializable {
             FileChooser chooser = new FileChooser();
             File file = chooser.showOpenDialog(null);
             if (file != null) {
-                String fileAsString = file.toString();
-                System.out.println(fileAsString);
+                path = file.toString();
+
             }
             choose_image.setDisable(false);
         });

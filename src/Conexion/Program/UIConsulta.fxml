@@ -49,7 +49,7 @@
             <Button fx:id="bidsAuction_oferta" layoutX="41.0" layoutY="233.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="184.0" style="-fx-background-color: #339966;" text="Bids for auction" textFill="#ffdede" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="193.0" fitWidth="167.0" layoutX="686.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imagen_item" fitHeight="193.0" fitWidth="167.0" layoutX="686.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Imagenes/Lupa.png" />
          </image>
