@@ -26,6 +26,8 @@ public class ControladorConsulta implements Initializable {
     @FXML
     Label lblAlias;
     @FXML
+    TextField txtNick;
+    @FXML
     ImageView imagen_item;
     @FXML
     TableView<Subasta> subastas_consulta;
@@ -86,7 +88,7 @@ public class ControladorConsulta implements Initializable {
         //3
         myAuction_subasta.setOnAction(event -> {
             try {
-                ObservableList<Comentario> a = FXCollections.observableArrayList(con.listar_subastas_usuario(con.getUsername()));
+                ObservableList<Comentario> a = FXCollections.observableArrayList(con.listar_subastas_usuario(txtNick.getText()));
                 comentario_consulta.setItems(a);
             }catch (SQLException e){e.printStackTrace();}
         });
@@ -100,7 +102,7 @@ public class ControladorConsulta implements Initializable {
         //3
         myBid_oferta.setOnAction(event -> {
             try {
-                ObservableList<Comentario> a = FXCollections.observableArrayList(con.listar_pujas_usuario(con.getUsername()));
+                ObservableList<Comentario> a = FXCollections.observableArrayList(con.listar_pujas_usuario(txtNick.getText()));
                 comentario_consulta.setItems(a);
             }catch (SQLException e){e.printStackTrace();}
         });

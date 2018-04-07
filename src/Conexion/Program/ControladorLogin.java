@@ -1,5 +1,6 @@
 package Conexion.Program;
 
+import Conexion.Clases.Usuario;
 import Conexion.Connect;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
 
 
 import java.io.IOException;
@@ -30,7 +32,9 @@ public class ControladorLogin implements Initializable {
             System.out.println("aaaaaaaaaa");
             String user = username.getText();
             String pass = password.getText();
-            con = new Connect(user,pass);
+            String pss = Usuario.encripta(pass);
+            con = new Connect(user,pss);
+
             if(con.isConnected()){
                 System.out.println("bbbbbbbb");
                 if(con.isAdministrador()){
@@ -40,7 +44,7 @@ public class ControladorLogin implements Initializable {
                         Parent root = (Parent) fxmlLoader.load();
                         Stage stage = new Stage();
                         stage.setTitle("Administrador");
-                        stage.setScene(new Scene(root));
+                        stage.setScene(new Scene(root, 672, 655));
                         stage.show();
 
                         ControladorAdministrador a = fxmlLoader.getController();
@@ -56,7 +60,7 @@ public class ControladorLogin implements Initializable {
                         Parent root = (Parent) fxmlLoader.load();
                         Stage stage = new Stage();
                         stage.setTitle("Participante");
-                        stage.setScene(new Scene(root));
+                        stage.setScene(new Scene(root, 676, 693));
                         stage.show();
 
                         ControladorParticipante a = fxmlLoader.getController();
@@ -69,8 +73,12 @@ public class ControladorLogin implements Initializable {
                     }catch (IOException e){
                         e.printStackTrace();
                     }
-                }//TODO QUE NO CONECTE POR QUE NO ES PARTICIPANTE NI USUARIOs
-            }//TODO QUE SI NO SE CONECTA SALGA UNA VENTANA DE QUE INTENTE DE NUEVO
+                }
+                username.setText("");
+                password.setText("");//TODO QUE NO CONECTE POR QUE NO ES PARTICIPANTE NI USUARIOs
+            }else{
+                new Alert(Alert.AlertType.ERROR, "No se encontraron datos con este usuario/contraseña, intente de nuevo.").showAndWait();//TODO QUE SI NO SE CONECTA SALGA UNA VENTANA DE QUE INTENTE DE NUEVO
+            }
         });
     }
 

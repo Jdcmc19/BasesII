@@ -47,15 +47,16 @@ public class ControladorParticipante implements Initializable {
     public void initialize(URL fxmlLocations, ResourceBundle resources){
 
         calification_commentS.getItems().addAll(1,2,3,4,5);
-        comboHora.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24);
+        comboHora.getItems().addAll(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23);
         ArrayList<Integer> tmp = new ArrayList<>();
-        for(int i=1;i<61;i++){
+        for(int i=0;i<60;i++){
             tmp.add(i);
         }
         comboMin.getItems().addAll();
         primary_item.setOnAction(event -> {
             rellenarComboboxSegundario(primary_item.getValue().toString());
         });
+
         ObservableList<Integer> tmp2 = FXCollections.observableArrayList(tmp);
         comboMin.getItems().addAll(tmp2);
         comboSeg.getItems().addAll(tmp2);
@@ -81,6 +82,9 @@ public class ControladorParticipante implements Initializable {
                 path="";
             }catch (SQLException e){e.printStackTrace();}
             rellenarComboboxIdSubastaVendedor();
+            rellenarComboboxIdSubasta();
+            rellenarComboboxIdSubastaComprador();
+            limpiarSubasta();
 
         });
         choose_image.setOnAction(event -> {
@@ -100,10 +104,15 @@ public class ControladorParticipante implements Initializable {
             Puja puja = new Puja(price,con.getUsername(),auction);
 
             try{
-                con.add_oferta(puja);
+                if(!con.add_oferta(puja)){
+                    new Alert(Alert.AlertType.ERROR, "No se insertó la puja, verifique datos.").showAndWait();
+                }else{
+                    price_bid.setText("");
+                }
             }catch (SQLException e){e.printStackTrace();}
 
             rellenarComboboxIdSubastaComprador();
+
         });
         insert_commentS.setOnAction(event -> {
             int auction = Integer.parseInt(auction_commentS.getValue().toString());
@@ -113,6 +122,7 @@ public class ControladorParticipante implements Initializable {
             try{
                 con.add_comentario_vendedor(calificacion,comment,auction);
             }catch (SQLException e){e.printStackTrace();}
+            comment_commentsS.setText("");
         });
         insert_commentB.setOnAction(event -> {
             int auction = Integer.parseInt(auction_commentB.getValue().toString());
@@ -120,6 +130,7 @@ public class ControladorParticipante implements Initializable {
             try{
                 con.add_comentario_comprador(comment,auction);
             }catch (SQLException e){e.printStackTrace();}
+            comment_commentsB.setText("");
         });
         go_consultas.setOnAction(event -> {
             try{
@@ -127,7 +138,7 @@ public class ControladorParticipante implements Initializable {
                 Parent root = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
                 stage.setTitle("Consulta");
-                stage.setScene(new Scene(root));
+                stage.setScene(new Scene(root, 914, 648));
                 stage.show();
 
                 ControladorConsulta a = fxmlLoader.getController();
@@ -177,6 +188,12 @@ public class ControladorParticipante implements Initializable {
             ObservableList<Integer> a = FXCollections.observableArrayList(con.listar_idsubastas_completas());
             auction_bid.setItems(a);
         }catch (SQLException e){e.printStackTrace();}
+    }
+    public void limpiarSubasta(){
+        price_auction.setText("");
+        delivery_auction.setText("");
+        name_item.setText("");
+        description_item.setText("");
     }
 }
 

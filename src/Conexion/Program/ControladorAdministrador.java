@@ -42,18 +42,30 @@ public class ControladorAdministrador implements Initializable {
             String confirm = confirm_registerUser.getText();
             String address = address_registerUser.getText();
             int tel = Integer.parseInt(tel_registerUser.getText());
-            if(password.equals(confirm)){
-                Usuario user = new Usuario(id, email, nick, name,lastName, address, password);
+            if(password.equals(confirm) && password.length()>= 8 && password.length()<=15){
+                String pss = Usuario.encripta(password);
+                Usuario user = new Usuario(id, email, nick, name,lastName, address, pss);
                 if(checkAdmi.isSelected()){
                     try{
-                        con.add_administrador(user,tel);
+                        if(!con.add_administrador(user,tel)){
+                            new Alert(Alert.AlertType.ERROR, "No se insertó el administrador, verifique datos.").showAndWait();
+                        }else{
+                            limpiarRegisterUser();
+                        }
                     }catch (SQLException e){e.printStackTrace();}
                 }
                 else{
                     try{
-                        con.add_participante(user,tel);
+                        if(!con.add_participante(user,tel)){
+                            new Alert(Alert.AlertType.ERROR, "No se insertó el participante, verifique datos.").showAndWait();
+                        }else{
+                            limpiarRegisterUser();
+                        }
                     }catch (SQLException e){e.printStackTrace();}
                 }
+
+            }else{
+                new Alert(Alert.AlertType.ERROR, "La contraseña no cumple con los requisitos.").showAndWait();
             }//TODO que salga una ventana de que esta mamando
 
         });
@@ -70,17 +82,23 @@ public class ControladorAdministrador implements Initializable {
             try{
                 con.mod_usuario(user);
             }catch (SQLException e){e.printStackTrace();}
+            limpiarEditUser();
         });
         add_phone.setOnAction(event -> {
             int number  = Integer.parseInt(number_phone.getText());
             String nick = nick_phone.getText();
 
             try {
-                con.add_telefono(nick,number);
+                if(!con.add_telefono(nick,number)){
+                    new Alert(Alert.AlertType.ERROR, "El telefono no se inserto, verifique datos.").showAndWait();
+                }else{
+                    limpiarTelefono();
+                }
             }
             catch(SQLException e){
                 e.printStackTrace();
             }
+
         });
         add_minimumIncrease.setOnAction(event -> {
             int i = Integer.parseInt(minimun_requirement.getText());
@@ -89,12 +107,14 @@ public class ControladorAdministrador implements Initializable {
             }catch (SQLException e){
                 e.printStackTrace();
             }
+            minimun_requirement.setText("");
         });
         add_percentageIncrease.setOnAction(event -> {
             int i = Integer.parseInt(percentage_requirement.getText());
             try{
                 con.mod_porcentaje(i);
             }catch(SQLException e){e.printStackTrace();}
+            percentage_requirement.setText("");
         });
         go_consultas.setOnAction(event -> {
             try{
@@ -102,7 +122,7 @@ public class ControladorAdministrador implements Initializable {
                 Parent root = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
                 stage.setTitle("Consulta");
-                stage.setScene(new Scene(root));
+                stage.setScene(new Scene(root, 914, 648));
                 stage.show();
 
                 ControladorConsulta a = fxmlLoader.getController();
@@ -120,5 +140,28 @@ public class ControladorAdministrador implements Initializable {
     }
     public void setAlias(){
         lblAlias.setText(con.getUsername());
+    }
+    public void limpiarRegisterUser(){
+        id_registerUser.setText("");
+        name_registerUser.setText("");
+        lastName_registerUser.setText("");
+        email_registerUser.setText("");
+        nick_registerUser.setText("");
+        password_registerUser.setText("");
+        confirm_registerUser.setText("");
+        address_registerUser.setText("");
+        tel_registerUser.setText("");
+        checkAdmi.setSelected(false);
+    }
+    public void limpiarEditUser(){
+        id_editUser.setText("");
+        name_editUser.setText("");
+        lastName_editUser.setText("");
+        email_editUser.setText("");
+        address_editUser.setText("");
+    }
+    public void limpiarTelefono(){
+        number_phone.setText("");
+        nick_phone.setText("");
     }
 }

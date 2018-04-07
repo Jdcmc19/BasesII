@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Program/UILogin.fxml"));
         primaryStage.setTitle("Bases de Datos II");
-        primaryStage.setScene(new Scene(root, 670, 500));
+        primaryStage.setScene(new Scene(root, 700, 261));
         primaryStage.show();
         System.out.println("asdasda");
     }

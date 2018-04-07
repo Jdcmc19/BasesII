@@ -82,4 +82,12 @@ public class Usuario {
     public void setPass(String pass) {
         this.pass = pass;
     }
+
+    public static String encripta(String contraseña){
+        contraseña=new StringBuilder(contraseña).reverse().toString();
+        String principio=contraseña.substring(0,contraseña.length()/2);
+        String finals= contraseña.substring((contraseña.length()/2),contraseña.length());
+        contraseña=finals+principio;
+        return contraseña;
+    }
 }

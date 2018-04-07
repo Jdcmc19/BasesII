@@ -107,19 +107,23 @@ public class Connect {
     public String getUsername(){
         return DB_USER;
     }
-    public void add_telefono(String alias,int numero)throws SQLException {
+    public Boolean add_telefono(String alias,int numero)throws SQLException {
         CallableStatement callableStatement = null;
         connection = getDBConnection();
 
-        String code = "{call HR.ADD_TELEFONO(?,?)}";
+        String code = "{call HR.ADD_TELEFONO2(?,?,?)}";
 
         try {
             callableStatement = connection.prepareCall(code);
 
             callableStatement.setString(1, alias);
             callableStatement.setInt(2, numero);
+            callableStatement.registerOutParameter(3,OracleTypes.NUMBER);
 
-            callableStatement.executeUpdate();
+            callableStatement.execute();
+            int result=callableStatement.getInt(3);
+            if(result==1)
+                return true;
 
         } catch (SQLException e) {
 
@@ -136,8 +140,9 @@ public class Connect {
             }
 
         }
+        return false;
     }
-    public void add_administrador(Usuario user,int telefono)throws SQLException{
+    public Boolean add_administrador(Usuario user,int telefono)throws SQLException{
         CallableStatement callableStatement = null;
         connection = getDBConnection();
 
@@ -150,7 +155,7 @@ public class Connect {
         String passw = user.getPass();
 
 
-        String code = "{call HR.ADD_ADMINISTRADOR(?,?,?,?,?,?,?,?)}";
+        String code = "{call HR.ADD_ADMINISTRADOR(?,?,?,?,?,?,?,?,?)}";
 
         try {
             callableStatement = connection.prepareCall(code);
@@ -164,7 +169,12 @@ public class Connect {
             callableStatement.setString(7, passw);
             callableStatement.setInt(8, telefono);
 
-            callableStatement.executeUpdate();
+            callableStatement.registerOutParameter(9,OracleTypes.NUMBER);
+
+            callableStatement.execute();
+            int result=callableStatement.getInt(9);
+            if(result==1)
+                return true;
 
         } catch (SQLException e) {
 
@@ -181,8 +191,9 @@ public class Connect {
             }
 
         }
+        return false;
     }
-    public void add_participante(Usuario user,int telefono)throws SQLException{
+    public Boolean add_participante(Usuario user,int telefono)throws SQLException{
         CallableStatement callableStatement = null;
         connection = getDBConnection();
 
@@ -195,7 +206,7 @@ public class Connect {
         String passw = user.getPass();
 
 
-        String code = "{call HR.ADD_PARTICIPANTE(?,?,?,?,?,?,?,?)}";
+        String code = "{call HR.ADD_PARTICIPANTE(?,?,?,?,?,?,?,?,?)}";
 
         try {
             callableStatement = connection.prepareCall(code);
@@ -209,7 +220,12 @@ public class Connect {
             callableStatement.setString(7, passw);
             callableStatement.setInt(8, telefono);
 
-            callableStatement.executeUpdate();
+            callableStatement.registerOutParameter(9,OracleTypes.NUMBER);
+
+            callableStatement.execute();
+            int result=callableStatement.getInt(9);
+            if(result==1)
+                return true;
 
         } catch (SQLException e) {
 
@@ -226,6 +242,7 @@ public class Connect {
             }
 
         }
+        return false;
     }
     public void mod_usuario(Usuario user)throws SQLException{
         CallableStatement callableStatement = null;
@@ -238,7 +255,7 @@ public class Connect {
         String dir = user.getDireccion();
 
 
-        String code = "{call HR.ADD_ADMINISTRADOR(?,?,?,?,?)}";
+        String code = "{call HR.MOD_USUARIO(?,?,?,?,?)}";
 
         try {
             callableStatement = connection.prepareCall(code);
@@ -314,7 +331,7 @@ public class Connect {
 
         }
     };
-    public void add_oferta(Puja puja)throws SQLException{
+    public Boolean add_oferta(Puja puja)throws SQLException{
         CallableStatement callableStatement = null;
         connection = getDBConnection();
 
@@ -323,7 +340,7 @@ public class Connect {
         int idsubasta= puja.getId();
 
 
-        String code = "{call HR.ADD_OFERTA(?,?,?)}";
+        String code = "{call HR.ADD_OFERTA(?,?,?,?)}";
 
         try {
             callableStatement = connection.prepareCall(code);
@@ -331,9 +348,12 @@ public class Connect {
             callableStatement.setBigDecimal(1, valorO);
             callableStatement.setString(2, alias);
             callableStatement.setInt(3, idsubasta);
+            callableStatement.registerOutParameter(4,OracleTypes.NUMBER);
 
-
-            callableStatement.executeUpdate();
+            callableStatement.execute();
+            int result=callableStatement.getInt(4);
+            if(result==1)
+                return true;
 
         } catch (SQLException e) {
 
@@ -350,6 +370,7 @@ public class Connect {
             }
 
         }
+        return false;
     };
     public void add_comentario_vendedor(int calificacion,String comentario,int idSubasta)throws SQLException{
         CallableStatement callableStatement = null;
